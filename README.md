@@ -1,5 +1,6 @@
 # fastapi-backend
 
+[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 [![python: 3.12](https://img.shields.io/badge/python-3.12-yellowgreen)](https://www.python.org/downloads/release/python-3122/)
 [![type checker: mypy](https://img.shields.io/badge/type%20checker-mypy-1f5082)](https://mypy-lang.org/)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
