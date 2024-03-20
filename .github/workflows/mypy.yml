@@ -48,4 +48,5 @@ jobs:
       #----------------------------------------------
       - name: Run mypy
         run: |
+          source .venv/bin/activate
           mypy src/
