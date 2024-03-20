@@ -1,12 +1,16 @@
 name: isort
 
-on: [ push, pull_request ]
+on: [ push ]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.12
       - name: Install Poetry
         uses: snok/install-poetry@v1
       - name: Install dependencies

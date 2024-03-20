@@ -1,6 +1,6 @@
 name: pylint
 
-on: [ push, pull_request ]
+on: [ push ]
 
 jobs:
   lint:
@@ -12,10 +12,18 @@ jobs:
         with:
           python-version: 3.12
       - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Install dependencies
+        uses: abatilo/actions-poetry@v2
+      - name: Setup a local virtual environment (if no poetry.toml file)
         run: |
-          poetry install
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+      - uses: actions/cache@v3
+        name: Cache a virtual environment
+        with:
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}
+      - name: Install the project dependencies
+        run: poetry install --no-interaction
       - name: Run pylint
         run: |
           pylint $(git ls-files '*.py')
