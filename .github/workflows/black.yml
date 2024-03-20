@@ -1,4 +1,4 @@
-name: Black
+name: black
 
 on: [ push, pull_request ]
 
@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: psf/black@stable
+      - name: Run black
+        uses: psf/black@stable
         with:
           src: "./src"
