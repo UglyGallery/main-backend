@@ -1,3 +1,7 @@
+[project]
+name = "Ugly Gallery main-backend"
+requires-python = ">=3.12"
+
 [tool.poetry]
 package-mode = false
 
@@ -10,9 +14,26 @@ alembic = "^1.13.1"
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
 mypy = "^1.9.0"
-isort = "^5.13.2"
-pylint = "^3.1.0"
+python-dotenv = "^1.0.1"
+ruff = "^0.3.3"
+pre-commit = "^3.6.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "TD003",
+    "TD002",
+    "FIX002",
+    "RUF003",
+    "RUF002",
+    "D105",
+    "ANN101",
+    "COM812",
+    "ISC001",
+    "D203",
+    "D213",
+]
