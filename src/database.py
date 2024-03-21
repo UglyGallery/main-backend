@@ -1,3 +1,5 @@
+"""TODO: Напиши нормальный docstring."""
+
 import os
 
 from dotenv import load_dotenv

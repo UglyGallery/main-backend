@@ -1,5 +1,7 @@
+"""TODO: Напиши нормальный docstring."""
+
 from sqlalchemy.orm import DeclarativeBase
 
 
 class Base(DeclarativeBase):
-    pass
+    """TODO: Напиши нормальный docstring."""

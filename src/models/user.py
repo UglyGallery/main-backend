@@ -1,3 +1,5 @@
+"""Тестовая модель. Будет удалена."""
+
 from typing import TYPE_CHECKING
 
 from sqlalchemy import String
@@ -10,6 +12,8 @@ if TYPE_CHECKING:
 
 
 class User(Base):
+    """Тестовая модель. Будет удалена."""
+
     __tablename__ = "user_account"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -17,7 +21,7 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(30))
     fullname: Mapped[str | None]
     addresses: Mapped[list["Address"]] = relationship(
-        back_populates="user", cascade="all, delete-orphan",
+        back_populates="user", cascade="all, delete-orphan"
     )
 
     def __repr__(self) -> str:

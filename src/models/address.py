@@ -1,4 +1,5 @@
 """Тестовая модель. Будет удалена."""
+
 from typing import TYPE_CHECKING
 
 from sqlalchemy import ForeignKey

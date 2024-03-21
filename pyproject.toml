@@ -16,6 +16,7 @@ black = "^24.3.0"
 mypy = "^1.9.0"
 python-dotenv = "^1.0.1"
 ruff = "^0.3.3"
+pre-commit = "^3.6.2"
 
 [build-system]
 requires = ["poetry-core"]
@@ -31,4 +32,8 @@ ignore = [
     "RUF002",
     "D105",
     "ANN101",
+    "COM812",
+    "ISC001",
+    "D203",
+    "D213",
 ]

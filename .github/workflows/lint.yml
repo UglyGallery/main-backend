@@ -3,19 +3,9 @@ name: Lint
 on: [ push ]
 
 jobs:
-  black:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run black
-        uses: psf/black@stable
-        with:
-          src: "./src"
-
   mypy:
     runs-on: ubuntu-latest
-    steps:
-      #----------------------------------------------
+    steps: #----------------------------------------------
       # check-out repo and set-up python
       #----------------------------------------------
       - uses: actions/checkout@v3
@@ -60,9 +50,20 @@ jobs:
           source .venv/bin/activate
           mypy src/
 
-
-  ruff:
+  ruff-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: chartboost/ruff-action@v1
+        with:
+          src: "./src"
+          args: "check"
+
+  ruff-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chartboost/ruff-action@v1
+        with:
+          src: "./src"
+          args: "format"
