@@ -17,11 +17,12 @@ class Post(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     author_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
     title: Mapped[str]
     description: Mapped[str | None]
     picture_link: Mapped[str]
     views: Mapped[int]
     created_at: Mapped[datetime | None]
 
-    category: Mapped["Category"] = relationship(ForeignKey("category.id"))
+    category: Mapped["Category"] = relationship()
     author: Mapped["User"] = relationship(back_populates="posts")
