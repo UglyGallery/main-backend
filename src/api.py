@@ -1,13 +1,11 @@
-"""TODO: Напиши нормальный docstring."""
-
 from fastapi import FastAPI
 
 app = FastAPI()
 
 
 @app.get("/")
-async def root() -> dict[str, str]:
-    """Возвращает сообщение "Hello World"."""
+async def register_new_user() -> dict[str, str]:
+    """Регистрирует нового пользователя."""
     return {"message": "Hello World"}
 
 
