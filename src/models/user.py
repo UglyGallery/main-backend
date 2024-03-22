@@ -6,7 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.models.base import Base
 
 if TYPE_CHECKING:
-    from src.models import UserFavoritePosts, UserProfileInfo
+    from src.models import Post, UserFavoritePosts, UserProfileInfo
 
 
 class User(Base):
@@ -22,3 +22,4 @@ class User(Base):
 
     user_info: Mapped["UserProfileInfo"] = relationship(back_populates="user")
     favorite_posts: Mapped[list["UserFavoritePosts"]] = relationship()
+    posts: Mapped[list["Post"]] = relationship(back_populates="author")

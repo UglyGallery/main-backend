@@ -24,4 +24,4 @@ class Post(Base):
     created_at: Mapped[datetime | None]
 
     category: Mapped["Category"] = relationship(ForeignKey("category.id"))
-    user: Mapped["User"] = relationship(back_populates="user")
+    author: Mapped["User"] = relationship(back_populates="posts")
