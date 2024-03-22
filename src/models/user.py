@@ -1,28 +1,24 @@
-"""Тестовая модель. Будет удалена."""
-
+from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.models.base import Base
 
 if TYPE_CHECKING:
-    from src.models import Address
+    from src.models import UserFavoritePosts, UserProfileInfo
 
 
 class User(Base):
-    """Тестовая модель. Будет удалена."""
+    """Модель пользователя."""
 
-    __tablename__ = "user_account"
+    __tablename__ = "user"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    email: Mapped[str]
+    password: Mapped[str]
+    nickname: Mapped[str]
+    created_at: Mapped[datetime | None]
 
-    name: Mapped[str] = mapped_column(String(30))
-    fullname: Mapped[str | None]
-    addresses: Mapped[list["Address"]] = relationship(
-        back_populates="user", cascade="all, delete-orphan"
-    )
-
-    def __repr__(self) -> str:
-        return f"User(id={self.id!r}, name={self.name!r}, fullname={self.fullname!r})"
+    user_info: Mapped["UserProfileInfo"] = relationship(back_populates="user")
+    favorite_posts: Mapped[list["UserFavoritePosts"]] = relationship()
