@@ -2,10 +2,10 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from src.models.base import Base
+from src.database.models.base import Base
 
 if TYPE_CHECKING:
-    from src.models import Post
+    from src.database.models import Post
 
 
 class Category(Base):
