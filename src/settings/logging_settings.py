@@ -1,8 +1,8 @@
-from src.settings import BaseSettings
+from src.settings.base_settings import BaseSettings
 
 
 class LoggingSettings(BaseSettings):
-    """Отвечает за хранение настроек, связанных с логированием."""
+    """Хранит настройки, связанные с логированием."""
 
     # TODO: Напиши нормальное логирование.
     #  (1) С помощью стандартной библиотеки logging. Никаких loguru.

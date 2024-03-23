@@ -1,10 +1,10 @@
 from pydantic import Field
 
-from src.settings import BaseSettings
+from src.settings.base_settings import BaseSettings
 
 
 class DatabaseSettings(BaseSettings):
-    """Отвечает за хранение настроек, связанных с базой данных."""
+    """Хранит настройки, связанные с базой данных."""
 
     username: str = Field(alias="POSTGRES_USERNAME")
     password: str = Field(alias="POSTGRES_PASSWORD")

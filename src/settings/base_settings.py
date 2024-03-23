@@ -5,7 +5,10 @@ from pydantic_settings import SettingsConfigDict
 
 
 class BaseSettings(PydanticBaseSettings):
-    """Отвечает за чтение настроек из .env файла."""
+    """Базовый класс для всех настроек.
+
+    Также отвечает за чтение значений из .env файла.
+    """
 
     model_config = SettingsConfigDict(
         env_file=Path("../../.env"), env_file_encoding="utf-8"
