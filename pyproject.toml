@@ -10,6 +10,7 @@ python = "^3.12"
 fastapi = "^0.110.0"
 SQLAlchemy = "^2.0.28"
 alembic = "^1.13.1"
+pydantic-settings = "^2.2.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
@@ -39,3 +40,6 @@ ignore = [
     "ISC001", # single-line-implicit-string-concatenation
     "COM812", # missing-trailing-comma
 ]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
