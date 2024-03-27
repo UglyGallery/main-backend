@@ -25,6 +25,8 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
+# TODO: Не срочно. Поменяй этот костыль на нормальное форматирование, как это советует дока:
+#  https://alembic.sqlalchemy.org/en/latest/autogenerate.html#applying-post-processing-and-python-code-formatters-to-generated-revisions
 exclude = ["src/alembic/versions"]
 
 [tool.ruff.lint]
