@@ -7,9 +7,9 @@ class DatabaseSettings(BaseSettings):
 
     username: str = Field(alias="POSTGRES_USERNAME")
     password: str = Field(alias="POSTGRES_PASSWORD")
-    host: str = Field(alias="POSTGRES_DATABASE")
-    port: str = Field(alias="POSTGRES_HOST")
-    database: str = Field(alias="POSTGRES_PORT")
+    host: str = Field(alias="POSTGRES_HOST")
+    port: str = Field(alias="POSTGRES_PORT")
+    database: str = Field(alias="POSTGRES_DATABASE")
 
     @property
     def url(self) -> str:
