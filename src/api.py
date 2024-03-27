@@ -1,17 +1,18 @@
-"""TODO: Напиши нормальный docstring."""
-
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from src.features import categories
 
 app = FastAPI()
 
+origins = ["*"]
 
-@app.get("/")
-async def root() -> dict[str, str]:
-    """Возвращает сообщение "Hello World"."""
-    return {"message": "Hello World"}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-
-@app.get("/hello/{name}")
-async def say_hello(name: str) -> dict[str, str]:
-    """Возвращает сообщение "Hello" вместе и "name"."""
-    return {"message": f"Hello {name}"}
+app.include_router(categories.router)

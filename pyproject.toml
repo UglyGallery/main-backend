@@ -7,11 +7,13 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
-fastapi = "^0.110.0"
+fastapi = {extras = ["all"], version = "^0.110.0"}
 SQLAlchemy = "^2.0.28"
 alembic = "^1.13.1"
 pydantic = {extras = ["email"], version = "^2.6.4"}
 pydantic-settings = "^2.2.1"
+python-dotenv = "^1.0.1"
+asyncpg = "^0.29.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.9.0"
@@ -21,6 +23,11 @@ pre-commit = "^3.6.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# TODO: Не срочно. Поменяй этот костыль на нормальное форматирование, как это советует дока:
+#  https://alembic.sqlalchemy.org/en/latest/autogenerate.html#applying-post-processing-and-python-code-formatters-to-generated-revisions
+exclude = ["src/alembic/versions"]
 
 [tool.ruff.lint]
 select = ["ALL"]
