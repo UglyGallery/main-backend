@@ -1,8 +1,14 @@
 from pydantic import BaseModel, ConfigDict
 
 
-class Category(BaseModel):
-    """Представляет категорию поста."""
+class CategoryReceive(BaseModel):
+    """Представляет категорию поста, которая ожидается на вход."""
+
+    name: str
+
+
+class CategoryResponse(BaseModel):
+    """Представляет категорию поста, которая будет возвращена."""
 
     model_config = ConfigDict(from_attributes=True)
 

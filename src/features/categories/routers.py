@@ -7,6 +7,6 @@ router = APIRouter(prefix="/categories", tags=["categories"])
 
 
 @router.get("/")
-async def get_categories() -> list[schemas.Category]:
+async def get_categories() -> list[schemas.CategoryResponse]:
     """Возвращает список всех доступных категорий."""
     return await get_all_categories()
