@@ -12,6 +12,7 @@ SQLAlchemy = "^2.0.28"
 alembic = "^1.13.1"
 pydantic = {extras = ["email"], version = "^2.6.4"}
 pydantic-settings = "^2.2.1"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.9.0"
