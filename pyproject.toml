@@ -12,6 +12,8 @@ SQLAlchemy = "^2.0.28"
 alembic = "^1.13.1"
 pydantic = {extras = ["email"], version = "^2.6.4"}
 pydantic-settings = "^2.2.1"
+python-dotenv = "^1.0.1"
+asyncpg = "^0.29.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.9.0"
@@ -21,6 +23,9 @@ pre-commit = "^3.6.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = ["src/alembic/versions"]
 
 [tool.ruff.lint]
 select = ["ALL"]

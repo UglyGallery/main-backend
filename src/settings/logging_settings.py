@@ -1,4 +1,4 @@
-from src.settings.base_settings import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class LoggingSettings(BaseSettings):
