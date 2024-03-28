@@ -6,6 +6,9 @@
 from collections.abc import Awaitable
 
 from src.cache.cache_provider import CacheProvider
+from src.cache.redis_provider import RedisCacheProvider
+
+__all__ = ["Cache", "RedisCacheProvider"]
 
 
 class Cache(CacheProvider):
