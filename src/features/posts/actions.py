@@ -28,14 +28,19 @@ async def create_new(
         #  возвращать не ID, а сразу модель из БД. И там же поднимать ошибку,
         #  если пользователь не найден.
 
-        # TODO: Обработай ошибку.
-        category: models.Category = (
-            await session.scalars(
-                select(models.Category).where(
-                    models.Category.name == post_info.category.name
+        try:
+            category: models.Category = (
+                await session.scalars(
+                    select(models.Category).where(
+                        models.Category.name == post_info.category.name
+                    )
                 )
-            )
-        ).one()
+            ).one()
+        except NoResultFound as err:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail="Указанная категория не найдена.",
+            ) from err
 
         post: models.Post = models.Post(
             author_id=user_id,
@@ -126,7 +131,7 @@ async def get_post_by_id(
             post: models.Post = (
                 await session.scalars(
                     select(models.Post)
-                    .where(models.Post.id == post_id)
+                    .where(models.Post.id == post_id, models.Post.visible)
                     .options(selectinload(models.Post.category))
                 )
             ).one()
