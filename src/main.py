@@ -1,12 +1,25 @@
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
+from typing import TYPE_CHECKING
+
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.features import categories, posts
 
-app = FastAPI()
+if TYPE_CHECKING:
+    from collections.abc import AsyncGenerator
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI) -> AsyncGenerator:
+    """Инициализирует общие ресурсы, такие как соединение с БД или Redis."""
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 origins = ["*"]
 
