@@ -23,12 +23,12 @@ async def create_new_route(
     dependencies=[Depends(dependencies.get_user_id), Depends(actions.add_image)],
 )
 async def add_image_route() -> None:
-    """Добавляет в пост изображение и делаем его видимым."""
+    """Добавляет в пост изображение."""
 
 
 @router.get("/make-visible", dependencies=[Depends(actions.make_visible)])
 async def make_visible_route() -> None:
-    """Добавляет в пост изображение и делаем его видимым."""
+    """Делает пост видимым."""
 
 
 @router.get(

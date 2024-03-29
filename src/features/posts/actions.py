@@ -86,7 +86,7 @@ async def make_visible(
     db: Annotated[AsyncSession, Depends(dependencies.get_db)],
     user_id: Annotated[int, Depends(dependencies.get_user_id)],
 ) -> None:
-    """Делает пост видимым, если это разрешено.
+    """Делает пост видимым.
 
     Пост разрешает сделать видимым, если:
     1. У поста присутствует изображение.
