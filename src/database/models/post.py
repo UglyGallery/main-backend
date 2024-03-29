@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import ForeignKey
+from sqlalchemy import DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database.models.base import Base
@@ -20,9 +20,12 @@ class Post(Base):
     category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
     title: Mapped[str]
     description: Mapped[str | None]
-    picture_link: Mapped[str]
-    views: Mapped[int]
-    created_at: Mapped[datetime | None]
+    picture_link: Mapped[str | None]
+    views: Mapped[int | None]
+    visible: Mapped[bool]
+    created_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
 
-    category: Mapped["Category"] = relationship()
+    category: Mapped["Category"] = relationship(back_populates="posts")
     author: Mapped["User"] = relationship(back_populates="posts")

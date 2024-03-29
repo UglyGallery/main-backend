@@ -1,5 +1,5 @@
 import abc
-from collections.abc import Awaitable
+from typing import Any
 
 
 class CacheProvider(abc.ABC):
@@ -10,9 +10,9 @@ class CacheProvider(abc.ABC):
     """
 
     @abc.abstractmethod
-    async def get(self, key: bytes | str) -> Awaitable:
+    async def get(self, key: Any) -> Any | None:  # noqa: ANN401
         """Возвращает значение из кэша."""
 
     @abc.abstractmethod
-    async def set(self, key: str, value: bytes | memoryview | str | float) -> Awaitable:
+    async def set(self, key: Any, value: Any) -> None:  # noqa: ANN401
         """Помещает значение в кэш."""

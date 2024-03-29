@@ -1,7 +1,7 @@
 """Отвечает за установление соединения c Redis."""
 
-import aioredis
+import redis
 
 from src.settings import settings
 
-redis_client = aioredis.Redis(host=settings.redis.host, port=settings.redis.port)
+redis_client = redis.Redis(host=settings.redis.host, port=settings.redis.port)

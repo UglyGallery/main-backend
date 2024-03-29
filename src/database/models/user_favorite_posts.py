@@ -17,5 +17,5 @@ class UserFavoritePosts(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), primary_key=True)
     post_id: Mapped[int] = mapped_column(ForeignKey("post.id"), primary_key=True)
 
-    post: Mapped["Post"] = relationship()
-    user: Mapped["User"] = relationship()
+    post: Mapped["Post"] = relationship(viewonly=True)
+    user: Mapped["User"] = relationship(viewonly=True)

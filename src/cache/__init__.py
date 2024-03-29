@@ -3,16 +3,18 @@
 ...не зависящее от конкретного провайдера (Redis, KeyDB и т.д.).
 """
 
-from collections.abc import Awaitable
+from typing import Any
 
 from src.cache.cache_provider import CacheProvider
 from src.cache.redis_provider import RedisCacheProvider
 
-__all__ = ["Cache", "RedisCacheProvider"]
+__all__ = ["Cache", "CacheProvider", "RedisCacheProvider"]
 
 
 class Cache(CacheProvider):
     """Реализация кэша с использованием одного из провайдеров."""
+
+    JWT_PUBLIC_KEY = "jwt-public-key"
 
     _cache_provider: CacheProvider
 
@@ -21,10 +23,10 @@ class Cache(CacheProvider):
         super().__init__()
         self._cache_provider = provider
 
-    async def get(self, key: bytes | str) -> Awaitable:
+    async def get(self, key: Any) -> Any | None:  # noqa: ANN401
         """Возвращает значение из текущего провайдера."""
-        return self._cache_provider.get(key)
+        return await self._cache_provider.get(key)
 
-    async def set(self, key: str, value: bytes | memoryview | str | float) -> Awaitable:
+    async def set(self, key: Any, value: Any) -> None:  # noqa: ANN401
         """Устанавливает значение в текущий провайдер."""
-        return self._cache_provider.set(key, value)
+        await self._cache_provider.set(key, value)
