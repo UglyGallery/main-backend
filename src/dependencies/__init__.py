@@ -42,6 +42,7 @@ async def _get_jwt_payload(
     """Проверяет, если ли у пользователя доступ к запрашиваемому ресурсу."""
     token: str = credentials.credentials
 
+    # TODO: Получай ключ из кэша, а не вот так.
     public_key: str = "apple"  # await cache.get(cache.JWT_PUBLIC_KEY)
 
     try:
