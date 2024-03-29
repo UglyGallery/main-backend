@@ -4,10 +4,10 @@ from typing import TYPE_CHECKING
 from sqlalchemy import DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from src.database.models.base import Base
+from src.infrastructure.database.models.base import Base
 
 if TYPE_CHECKING:
-    from src.database.models import Category, User
+    from src.infrastructure.database.models import Category, User
 
 
 class Post(Base):

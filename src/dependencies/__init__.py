@@ -14,9 +14,9 @@ from minio import Minio
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.cache import Cache, RedisCacheProvider
-from src.database import async_session
-from src.my_minio import minio_client
-from src.my_redis import redis_client
+from src.infrastructure.database import async_session
+from src.infrastructure.my_minio import minio_client
+from src.infrastructure.my_redis import redis_client
 from src.security import security, update_cached_jwt_public_key
 
 

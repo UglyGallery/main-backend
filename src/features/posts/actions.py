@@ -12,8 +12,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from src import dependencies
-from src.database import models
 from src.features.posts import schemas
+from src.infrastructure.database import models
 
 
 async def create_new(
