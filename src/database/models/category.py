@@ -16,4 +16,4 @@ class Category(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
 
-    posts: Mapped[list["Post"]] = relationship()
+    posts: Mapped[list["Post"]] = relationship(back_populates="category")

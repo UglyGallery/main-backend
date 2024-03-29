@@ -21,9 +21,9 @@ class Post(Base):
     title: Mapped[str]
     description: Mapped[str | None]
     picture_link: Mapped[str | None]
-    views: Mapped[int | None]
+    views: Mapped[int] = mapped_column(default=0)
     visible: Mapped[bool]
-    created_at: Mapped[datetime | None] = mapped_column(
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
 
