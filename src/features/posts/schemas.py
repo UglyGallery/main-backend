@@ -22,6 +22,7 @@ class PostResponse(BaseModel):
     category: CategoryResponse
     title: str
     description: str | None = None
-    picture_link: str
+    picture_link: str | None
     views: int
-    created_at: datetime | None = None  # TODO: Убери None. И в ORM модели Alchemy тоже.
+    visible: bool
+    created_at: datetime

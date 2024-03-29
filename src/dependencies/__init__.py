@@ -35,13 +35,7 @@ async def get_cache() -> Cache:
     return Cache(redis_provider)
 
 
-async def get_filestorage() -> Minio:
-    """Возвращает файловое хранилище."""
-    # TODO: Сделай нормальную абстракцию, так же как для кэша.
-    return minio_client
-
-
-async def get_jwt_payload(
+async def _get_jwt_payload(
     credentials: Annotated[HTTPAuthorizationCredentials, Depends(security)],
     cache: Annotated[Cache, Depends(get_cache)],
 ) -> dict:
@@ -61,9 +55,19 @@ async def get_jwt_payload(
             raise HTTPException(status_code=401, detail=str(e)) from e
 
 
-async def get_user_id(payload: Annotated[dict, Depends(get_jwt_payload)]) -> int:
+async def get_filestorage() -> Minio:
+    """Возвращает файловое хранилище."""
+    # TODO: Сделай нормальную абстракцию, так же как для кэша.
+    return minio_client
+
+
+async def get_user_id(payload: Annotated[dict, Depends(_get_jwt_payload)]) -> int:
     """Возвращает ID пользователя из JWT токена.
 
     Предварительно проверяет токен на валидность.
     """
     return int(payload["sub"])
+
+
+async def has_valid_jwt(_: Annotated[dict, Depends(_get_jwt_payload)]) -> None:
+    """Проверяет, верен ли JWT токен текущего запроса."""
