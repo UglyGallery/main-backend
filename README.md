@@ -13,3 +13,33 @@
 poetry install
 pre-commit install
 ```
+
+## Гайд по запуску кода
+
+1.  ```shell
+    git clone https://github.com/UglyGallery/main-backend.git
+    cd main-backend
+    poetry install
+    pre-commit install
+    ```
+2. Создадим файл с переменными среды:
+    ```shell
+    cp .env.example .env
+    ```
+3. Запустим Докер:
+   ```shell
+   docker compose up -d
+   ```
+4. Активируем Poetry virtual environment:
+   ```shell
+   poetry env use 3.12
+   ```
+5. Запустим `main` файл:
+   ```shell
+   python main.py
+   ```
+
+## Про расположение main файла
+
+По хорошему, он бы должен находится в папке `src/`. Но это ломает импорты, если проект не добавлен нужным образом
+в `PYTHONPATH`... Пусть пока временно будет так, потом поправим. TODO!
