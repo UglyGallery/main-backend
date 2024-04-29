@@ -5,6 +5,7 @@ services:
     image: postgres:latest
     ports:
       - ${POSTGRES_PORT}:5432
+    user: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USERNAME}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

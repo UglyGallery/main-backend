@@ -34,7 +34,12 @@ pre-commit install
    ```shell
    poetry env use 3.12
    ```
-5. Запустим `main` файл:
+5. Применяем миграции:
+   ```shell
+   alembic upgrade head
+   ```
+
+6. Запустим `main` файл:
    ```shell
    python main.py
    ```
